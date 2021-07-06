@@ -1,12 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { RootState } from '../../redux/store';
 
 import Layout from '../Layouts/Layout';
 
 
 const PrivateRoute = ({ component, ...rest }: any) => {
 
-    let isAuthenticated : Boolean = false;
+    const auth = useSelector((state : RootState) => state.auth);
+
+    let isAuthenticated : Boolean = auth.isAuthenticated;
 
     const routeComponent = (props: any) => (
         isAuthenticated

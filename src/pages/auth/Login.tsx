@@ -18,6 +18,10 @@ import Logo from '../../assets/images/logos/huawei.png';
 // data
 import data from '../../utils/data/login.json';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+// redux
+import { authActions } from '../../redux/store/auth';
 
 interface ICredentials {
     email: string,
@@ -55,6 +59,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props: any) => {
 
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showError, setShowError] = useState(false);
@@ -70,9 +76,9 @@ const Login = (props: any) => {
         const isAuthenticated = data.find(i => JSON.stringify(i) === JSON.stringify(credentials));
 
         if (isAuthenticated) {
-            console.log('scs');
             setShowError(false);
-            props.history.push('/register');
+            dispatch(authActions.login({ isAuthenticated: true, email: credentials.email }));
+            props.history.push('/');
         } else {
             setShowError(true);
         }

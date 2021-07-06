@@ -1,2 +1,16 @@
 @import "assets/styles/normalizer.scss";
 $primary: #c7000b;
+
+#world-map-wrapper {
+    svg {
+        fill: $primary;
+        path {
+            transition: 0.3s ease all;
+            cursor: pointer;
+        }
+        path:focus {
+            fill: #ff0 !important;
+            outline: none;
+        }
+    }
+}
