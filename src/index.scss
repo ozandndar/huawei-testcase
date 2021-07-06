@@ -1,16 +1,39 @@
 @import "assets/styles/normalizer.scss";
 $primary: #c7000b;
+$map-color: #ef7954;
 
 #world-map-wrapper {
     svg {
-        fill: $primary;
+        fill: $map-color;
         path {
-            transition: 0.3s ease all;
+            transition: 0.2s ease all;
             cursor: pointer;
         }
+        path:hover {
+            fill: grey !important;
+        }
         path:focus {
-            fill: #ff0 !important;
+            fill: $primary;
             outline: none;
         }
     }
+}
+
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6 div {
+    min-width: max-content;
+}
+
+.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3 {
+    max-width: 100%;
+}
+
+.huawei-loading {
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.MuiList-padding {
+    max-height: 90vh;
 }

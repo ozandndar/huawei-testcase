@@ -5,9 +5,11 @@ import {combineReducers} from "redux";
 import thunk from "redux-thunk";
 
 import AuthReducer from "./auth";
+import CovidReducer from "./covid";
 
 const reducers = combineReducers({
-    auth : AuthReducer
+    auth : AuthReducer,
+    covid: CovidReducer
    });
 
 const persistConfig = {

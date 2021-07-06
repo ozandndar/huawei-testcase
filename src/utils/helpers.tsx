@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-export const setAuthorizationToken = (token: string) => {
-    if (token) {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    } else {
-        delete axios.defaults.headers.common['Authorization'];
-    }
+// on login
+export const setAuthorizationToken = () => {
+    axios.defaults.headers.common["Authorization"] = `apikey 6zRIZ8ux1vBlLFiCFj7T23:2tikV8lTgvTRV5d6MRgzmx`;
+}
+
+// on logout
+export const deleteAuthorizationToken = () => {
+    delete axios.defaults.headers.common['Authorization'];
 }

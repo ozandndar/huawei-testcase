@@ -17,11 +17,12 @@ import Logo from '../../assets/images/logos/huawei.png';
 
 // data
 import data from '../../utils/data/login.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // redux
 import { authActions } from '../../redux/store/auth';
+import { setAuthorizationToken, deleteAuthorizationToken } from '../../utils/helpers';
 
 interface ICredentials {
     email: string,
@@ -65,6 +66,11 @@ const Login = (props: any) => {
     const [password, setPassword] = useState('');
     const [showError, setShowError] = useState(false);
 
+    useEffect(() => {
+        dispatch(authActions.logout());
+        deleteAuthorizationToken();
+    }, [dispatch])
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
@@ -77,6 +83,8 @@ const Login = (props: any) => {
 
         if (isAuthenticated) {
             setShowError(false);
+            setAuthorizationToken();
+            window.sessionStorage.setItem('email', credentials.email);
             dispatch(authActions.login({ isAuthenticated: true, email: credentials.email }));
             props.history.push('/');
         } else {
