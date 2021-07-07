@@ -131,10 +131,6 @@ const Register = (props: any) => {
                         onChange={(e) => { setPassword(e.target.value) }}
                     />
                     <small>You can use test credentials like <b>email: test</b> and <b>password: test</b></small>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="secondary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
