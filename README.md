@@ -10,7 +10,7 @@ This is a test case for Huawei.
 npm install
 ```
 
-### Your fingers could have trigger the bomb
+### Run
 ```
 npm run start
 ```
